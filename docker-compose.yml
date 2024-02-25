@@ -1,0 +1,8 @@
+version: '2'
+services:
+    Micro-Service1:
+        container_name: app-helloworld
+        build:
+            context: ./HelloWorld
+            dockerfile: Dockerfile
+        image: app-helloworld:latest
