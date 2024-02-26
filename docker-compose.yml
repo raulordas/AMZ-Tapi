@@ -3,6 +3,6 @@ services:
     Micro-Service1:
         container_name: app-helloworld
         build:
-            context: ./HelloWorld
+            context: ./
             dockerfile: Dockerfile
         image: app-helloworld:latest
