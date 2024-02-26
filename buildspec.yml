@@ -14,5 +14,5 @@ phases:
   build:
     commands:
       - docker-compose --file=docker-compose.yml build
-      - docker tag app-helloworld:latest 205481514190.dkr.ecr.dkr.ecr.us-east-1.amazonaws.com/app-helloworld:latest
-      - docker push 205481514190.dkr.ecr.us-east-1.amazonaws.com/app-helloworld:latest
+      - docker tag app-helloworld:latest 205481514190.dkr.ecr.dkr.ecr.us-east-1.amazonaws.com/app-helloworld/app-helloworld:latest
+      - docker push 205481514190.dkr.ecr.us-east-1.amazonaws.com/app-helloworld/app-helloworld:latest
