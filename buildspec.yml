@@ -5,13 +5,13 @@ phases:
       java: corretto11
     commands:
       - echo Hello from the other side
-pre_build:
+  pre_build:
     commands:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region {{AWS region}} | docker login --username AWS --password-stdin {{AWS Account Id}}.dkr.ecr.{{AWS region}}.amazonaws.com
       - echo Log in to ECR successfull
       - aws ecr batch-delete-image --repository-name {{repo name}}--image-ids imageTag={{image tag}}
-build:
+  build:
     commands:
       - docker-compose --file=docker-compose.yml build
       - docker tag {{imageName1}}:latest {{AWS Account Id}}.dkr.ecr.{{AWS region}}.amazonaws.com/{{imageName1}}:latest
