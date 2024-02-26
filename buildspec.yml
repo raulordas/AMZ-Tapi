@@ -10,9 +10,9 @@ phases:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 205481514190.dkr.ecr.us-east-1.amazonaws.com
       - echo Log in to ECR successfull
-      - aws ecr batch-delete-image --repository-name app-helloworld --image-ids imageTag={{image tag}}
+      - aws ecr batch-delete-image --repository-name app-helloworld --image-ids imageTag=${IMAGE_TAG}
   build:
     commands:
       - docker-compose --file=docker-compose.yml build
-      - docker tag {{imageName1}}:latest 205481514190.dkr.ecr.dkr.ecr.us-east-1.amazonaws.com/{{imageName1}}:latest
-      - docker push 205481514190.dkr.ecr.us-east-1.amazonaws.com/{{imageName1}}:latest
+      - docker tag $IMAGE_NAME:latest 205481514190.dkr.ecr.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_NAME:latest
+      - docker push 205481514190.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_NAME:latest
