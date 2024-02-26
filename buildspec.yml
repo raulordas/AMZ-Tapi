@@ -3,6 +3,8 @@ phases:
   install:
     runtime-versions:
       java: corretto11
+  commands:
+    - echo Hello from the other side
 pre_build:
     commands:
       - echo Logging in to Amazon ECR...
