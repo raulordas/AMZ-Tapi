@@ -3,14 +3,12 @@ phases:
   install:
     runtime-versions:
       java: corretto11
-
 pre_build:
     commands:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region {{AWS region}} | docker login --username AWS --password-stdin {{AWS Account Id}}.dkr.ecr.{{AWS region}}.amazonaws.com
       - echo Log in to ECR successfull
       - aws ecr batch-delete-image --repository-name {{repo name}}--image-ids imageTag={{image tag}}
-
 build:
     commands:
       - docker-compose --file=docker-compose.yml build
