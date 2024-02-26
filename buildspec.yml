@@ -8,9 +8,9 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - aws ecr get-login-password --region us-east-1.amazonaws.com | docker login --username AWS --password-stdin 205481514190.dkr.ecr.us-east-1.amazonaws.com
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 205481514190.dkr.ecr.us-east-1.amazonaws.com
       - echo Log in to ECR successfull
-      - aws ecr batch-delete-image --repository-name app-helloworld--image-ids imageTag=app-helloworld
+      - aws ecr batch-delete-image --repository-name app-helloworld --image-ids imageTag=app-helloworld
   build:
     commands:
       - docker-compose --file=docker-compose.yml build
